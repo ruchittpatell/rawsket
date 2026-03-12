@@ -7,6 +7,13 @@ raw socket connections and experiments
 - wiki net sockets https://en.wikipedia.org/wiki/Network_socket
 - mit sockets & networking https://web.mit.edu/6.005/www/fa16/classes/21-sockets-networking/
 - tcp ip and sockets https://www.youtube.com/watch?v=C7CpfL1p6y0
+- rfc 147 def of a socket https://www.rfc-editor.org/rfc/rfc147
+
+
+### info
+- tcp / stream / stateful
+- udp / datagram / stateless
+- os api for transport protocols
 
 
 ### what is a socket
