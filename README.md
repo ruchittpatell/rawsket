@@ -8,6 +8,7 @@ raw socket connections and experiments
 - mit sockets & networking https://web.mit.edu/6.005/www/fa16/classes/21-sockets-networking/
 - tcp ip and sockets https://www.youtube.com/watch?v=C7CpfL1p6y0
 - rfc 147 def of a socket https://www.rfc-editor.org/rfc/rfc147
+- libevent non-blocking https://libevent.org/libevent-book/
 
 
 ### info
@@ -67,3 +68,25 @@ Reading and writing can be delayed a bit from when the user calls the
 syscalls because of many reasons i.e the NIC might be busy, protocol window 
 is full, kernel is busy with something else, etc.
 ```
+
+```
+Beej's guide https://www.beej.us/guide/bgnet/pdf/bgnet_a4_c_1.pdf
+All you have to do for stream sockets is send() the data out.
+All you have to do for datagram sockets is encapsulate the packet in the method of your choosing and
+sendto() it out. The kernel builds the Transport Layer and Internet Layer on for you and the hardware
+does the Network Access Layer. Ah, modern technology.
+```
+
+### look into
+- non-blocking io
+- i/o multiplexing
+- event loop architecture
+- epoll
+- conn mgm: ds (conn structs, sockets maps, fd tables), concepts (conn lifecycle, cleanup, idle timeouts, keepalive)
+- buffer mgm: (per conn buffer, ring buffer, buffer pools), minimize mem, fragmentation
+- concurrency: pthread, thread per conn, thread pool, worker processes, event loops per core, synchronization, lock contention
+- high perf io: writev, readv, sendfile, splice, mmap
+- modern unix io: io_uring, submission and completion queues, async networking
+- load testing benchmarking
+- prod: master/worker model, multi-process servers, per-core event loops (see: nginx, redis, haproxy, envoy)
+- protocol design: message framing, length-prefixed, streaming, binary v text
